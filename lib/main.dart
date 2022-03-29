@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/firebase_options.dart';
 import 'package:instagram_clone/pages/login/login_page.dart';
+import 'package:instagram_clone/pages/signup/sign_up_page.dart';
 import 'package:instagram_clone/responsive/mobile_page_layout.dart';
 import 'package:instagram_clone/responsive/responsive_layout_page.dart';
 import 'package:instagram_clone/responsive/web_page_layout.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: mobileBackgroundColor,
       ),
-      home: const LoginPage(),
+      home: const SignUpPage(),
       // ResponsiveLayout(
       //   webPageLayout: WebPageLayout(),
       //   mobilePageLayout: MobilePageLayout(),
