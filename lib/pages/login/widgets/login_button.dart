@@ -2,27 +2,40 @@ import 'package:flutter/material.dart';
 import '../../../utils/colors.dart';
 
 class LoginButton extends StatelessWidget {
-  const LoginButton({
+  final Function press;
+  bool isLoading;
+  LoginButton({
     Key? key,
+    required this.press,
+    required this.isLoading,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Container(
-        width: double.infinity,
-        alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(vertical: 12),
-        decoration: const ShapeDecoration(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(4),
+      onTap: () {
+        press();
+      },
+      child: isLoading
+          ? const Center(
+              child: CircularProgressIndicator(
+                color: primaryColor,
+              ),
+            )
+          : Container(
+              width: double.infinity,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              decoration: const ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(4),
+                  ),
+                ),
+                color: blueColor,
+              ),
+              child: const Text('Log in'),
             ),
-          ),
-          color: blueColor,
-        ),
-        child: const Text('Log in'),
-      ),
     );
   }
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class SignUpText extends StatelessWidget {
+  final Function press;
   const SignUpText({
     Key? key,
+    required this.press,
   }) : super(key: key);
 
   @override
@@ -17,7 +19,9 @@ class SignUpText extends StatelessWidget {
           child: const Text('Don´t have an account?'),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            press();
+          },
           child: Container(
             padding: const EdgeInsets.symmetric(
               vertical: 8,
