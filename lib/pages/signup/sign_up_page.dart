@@ -6,7 +6,6 @@ import 'package:instagram_clone/pages/signup/widgets/sign_up_button.dart';
 import 'package:instagram_clone/resourses/auth_methods.dart';
 import 'package:instagram_clone/utils/utils.dart';
 import 'package:instagram_clone/widgets/text_field_input.dart';
-
 import '../../responsive/mobile_page_layout.dart';
 import '../../responsive/responsive_layout_page.dart';
 import '../../responsive/web_page_layout.dart';
