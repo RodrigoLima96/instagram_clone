@@ -14,8 +14,6 @@ class AuthMethods {
     DocumentSnapshot snap =
         await _firestore.collection('users').doc(currentUser.uid).get();
 
-    print(snap.data());
-
     return model.User.fromMap(snap);
   }
 
@@ -39,8 +37,6 @@ class AuthMethods {
           email: email,
           password: password,
         );
-
-        print(credential.user!.uid);
 
         String photoUrl = await StorageMethods()
             .uploadImageToStorage('profilePics', file, false);
