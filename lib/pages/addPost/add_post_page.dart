@@ -60,11 +60,18 @@ class _AddPostPageState extends State<AddPostPage> {
         context: context,
         builder: (context) {
           return SimpleDialog(
-            title: const Text('Create a Post'),
+            title: const Text(
+              'Create a Post',
+              textAlign: TextAlign.center,
+            ),
             children: [
+              const Divider(),
               SimpleDialogOption(
                 padding: const EdgeInsets.all(20),
-                child: const Text('Take a Photo'),
+                child: const Text(
+                  'Take a Photo',
+                  textAlign: TextAlign.center,
+                ),
                 onPressed: () async {
                   Navigator.pop(context);
                   Uint8List file = await pickImage(ImageSource.camera);
@@ -73,9 +80,13 @@ class _AddPostPageState extends State<AddPostPage> {
                   });
                 },
               ),
+              const Divider(),
               SimpleDialogOption(
                 padding: const EdgeInsets.all(20),
-                child: const Text('Choose from gallery'),
+                child: const Text(
+                  'Choose from gallery',
+                  textAlign: TextAlign.center,
+                ),
                 onPressed: () async {
                   Navigator.pop(context);
                   Uint8List file = await pickImage(ImageSource.gallery);
@@ -84,9 +95,13 @@ class _AddPostPageState extends State<AddPostPage> {
                   });
                 },
               ),
+              const Divider(),
               SimpleDialogOption(
                 padding: const EdgeInsets.all(20),
-                child: const Text('Cancel'),
+                child: const Text(
+                  'Cancel',
+                  textAlign: TextAlign.center,
+                ),
                 onPressed: () {
                   Navigator.pop(context);
                 },
