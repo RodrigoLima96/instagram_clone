@@ -7,6 +7,8 @@ import 'package:instagram_clone/widgets/like_animation.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../pages/comments/comments_page.dart';
+
 class PostCard extends StatefulWidget {
   // ignore: prefer_typing_uninitialized_variables
   final snap;
@@ -152,7 +154,11 @@ class _PostCardState extends State<PostCard> {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const CommentsPage(),
+                  ),
+                ),
                 icon: const Icon(
                   Icons.comment_outlined,
                 ),
