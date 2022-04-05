@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:instagram_clone/pages/profile/profile_page.dart';
 import 'package:instagram_clone/utils/colors.dart';
 
 class SearchPage extends StatefulWidget {
@@ -59,14 +60,19 @@ class _SearchPageState extends State<SearchPage> {
                 return ListView.builder(
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                          snapshot.data!.docs[index]['photoUrl'],
+                    return InkWell(
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ProfilePage(
+                              uid: snapshot.data!.docs[index]['uid']))),
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                            snapshot.data!.docs[index]['photoUrl'],
+                          ),
+                          radius: 16,
                         ),
-                        radius: 16,
+                        title: Text(snapshot.data!.docs[index]['username']),
                       ),
-                      title: Text(snapshot.data!.docs[index]['username']),
                     );
                   },
                 );
@@ -82,8 +88,10 @@ class _SearchPageState extends State<SearchPage> {
                 return StaggeredGridView.countBuilder(
                   crossAxisCount: 3,
                   itemCount: snapshot.data!.docs.length,
-                  itemBuilder: (context, index) =>
-                      Image.network(snapshot.data!.docs[index]['postUrl']),
+                  itemBuilder: (context, index) => Image.network(
+                    snapshot.data!.docs[index]['postUrl'],
+                    fit: BoxFit.cover,
+                  ),
                   staggeredTileBuilder: (index) => StaggeredTile.count(
                     (index % 7 == 0) ? 2 : 1,
                     (index % 7 == 0) ? 2 : 1,
