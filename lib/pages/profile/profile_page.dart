@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/pages/login/login_page.dart';
+import 'package:instagram_clone/resourses/auth_methods.dart';
 import 'package:instagram_clone/resourses/firestore_methods.dart';
 import 'package:instagram_clone/utils/colors.dart';
 import 'package:instagram_clone/utils/utils.dart';
@@ -106,9 +108,19 @@ class _ProfilePageState extends State<ProfilePage> {
                                             backgroundColor:
                                                 mobileBackgroundColor,
                                             borderColor: Colors.grey,
-                                            text: 'Edit profile',
+                                            text: 'Sign Out',
                                             textColor: primaryColor,
-                                            press: () {},
+                                            press: () async {
+                                              await AuthMethods().signOut();
+                                              // ignore: use_build_context_synchronously
+                                              Navigator.of(context)
+                                                  .pushReplacement(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const LoginPage(),
+                                                ),
+                                              );
+                                            },
                                           )
                                         : isFollowing
                                             ? FollowButon(
