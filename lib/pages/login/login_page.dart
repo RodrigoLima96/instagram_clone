@@ -5,9 +5,9 @@ import 'package:instagram_clone/pages/login/widgets/login_button.dart';
 import 'package:instagram_clone/pages/signup/sign_up_page.dart';
 import 'package:instagram_clone/resourses/auth_methods.dart';
 import 'package:instagram_clone/responsive/responsive_layout_page.dart';
+import 'package:instagram_clone/utils/global_variables.dart';
 import 'package:instagram_clone/utils/utils.dart';
 import 'package:instagram_clone/widgets/text_field_input.dart';
-
 import '../../responsive/mobile_page_layout.dart';
 import '../../responsive/web_page_layout.dart';
 
@@ -71,7 +71,10 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
+          padding: MediaQuery.of(context).size.width > webPageSize
+              ? EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width / 3)
+              : const EdgeInsets.symmetric(horizontal: 32),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
